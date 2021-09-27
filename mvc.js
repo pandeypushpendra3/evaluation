@@ -33,7 +33,7 @@ const jobSchema  = new mongoose.Schema({
     job_rating :{type:String,required:true},
     skill :{type:String,required:true},
     jobNoticePeriod :{type:String,required:false},
-    // company ={type:mongoose.Schema.Types.ObjectId,ref="company",required:true},
+    // company ={type:mongoose.Schema.Types.ObjectId,ref="Company",required:true},
 },
 
 {
@@ -55,12 +55,12 @@ app.get("/company/:id",async(req,res)=>{
     const user = await Company.findById(req.params.working_mode,req.body,{new:true}).lean().exec();
     return res.send(200).send({user});
     
-})
+});
 app.get("/company/:id",async(req,res)=>{
     const user = await Company.find(req.params.company_vacancies).lean().exec();
     return res.send(200).send({user});
     
-})
+});
 
 app.get("/company",async(req, res)=>{
     const user = await Company.find().lean().exec();
