@@ -21,4 +21,18 @@ const companySchema  = new mongoose.Schema({
 
 const Company = mongoose.model('company',companySchema);
 
-// crea
+// create a schema for jobb 
+
+const jobSchema  = new mongoose.Schema({
+    job_criteria :{type:String,required:true},
+    working_hour ={type:String,required:true},
+    location_wise_job ={type:String,required:true},
+    job_rating ={type:String,required:true},
+    skill ={type:String,required:true},
+    jobNoticePeriod = {type:String,required:false},
+    company ={type:mongoose.Schema.Types.ObjectId,ref="company",required:true},
+});
+
+const job = mongoose.model('job',jobSchema);
+
+
