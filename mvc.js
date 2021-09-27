@@ -15,7 +15,10 @@ const companySchema  = new mongoose.Schema({
     working_mode:{type:String,required:true},
     noticePeriod_time:{type:String,required:true},
     rating:{type:String,required:true},
-});
+},{
+    versionKey:false
+}
+);
 
 // connect the companySchema to naukri collection
 
@@ -31,8 +34,15 @@ const jobSchema  = new mongoose.Schema({
     skill ={type:String,required:true},
     jobNoticePeriod = {type:String,required:false},
     company ={type:mongoose.Schema.Types.ObjectId,ref="company",required:true},
+},
+
+{
+    versionKey:false
 });
 
 const job = mongoose.model('job',jobSchema);
 
+const app=  express();
+app.use(express.json());
 
+// crud API------------------>
