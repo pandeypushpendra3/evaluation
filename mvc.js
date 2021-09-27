@@ -56,6 +56,11 @@ app.get("/company/:id",async(req,res)=>{
     return res.send(200).send({user});
     
 })
+app.get("/company/:id",async(req,res)=>{
+    const user = await Company.find(req.params.company_vacancies).lean().exec();
+    return res.send(200).send({user});
+    
+})
 
 app.get("/company",async(req, res)=>{
     const user = await Company.find().lean().exec();
@@ -69,6 +74,11 @@ app.post("/job",async(req, res)=>{
     const user = await Job.create(req.body);
     return res.send(201).send({user})
 });
+app.get("/job/:id",async(req,res)=>{
+    const user = await Job.findById(req.params.working_mode,req.body,{new:true}).lean().exec();
+    return res.send(200).send({user});
+    
+})
 
 
 app.get("/job",async(req, res)=>{
