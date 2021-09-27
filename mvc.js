@@ -28,12 +28,12 @@ const Company = mongoose.model('company',companySchema);
 
 const jobSchema  = new mongoose.Schema({
     job_criteria :{type:String,required:true},
-    working_hour ={type:String,required:true},
-    location_wise_job ={type:String,required:true},
-    job_rating ={type:String,required:true},
-    skill ={type:String,required:true},
-    jobNoticePeriod = {type:String,required:false},
-    company ={type:mongoose.Schema.Types.ObjectId,ref="company",required:true},
+    working_hour :{type:String,required:true},
+    location_wise_job :{type:String,required:true},
+    job_rating :{type:String,required:true},
+    skill :{type:String,required:true},
+    jobNoticePeriod :{type:String,required:false},
+    // company ={type:mongoose.Schema.Types.ObjectId,ref="company",required:true},
 },
 
 {
@@ -46,3 +46,20 @@ const app=  express();
 app.use(express.json());
 
 // crud API------------------>
+
+app.post("/company",async(req, res)=>{
+    const user = await Company.create(req.body);
+    return res.send(201).send({user})
+});
+
+app.get("/company",async(req, res)=>{
+    const user = await Company.find().lean().exec();
+    return res.status(200).send({user});
+
+})
+
+app.listen(2354,async function() {
+await connect();
+console.log("listening to port 2354")
+
+});
