@@ -22,7 +22,7 @@ const companySchema  = new mongoose.Schema({
 
 // connect the companySchema to naukri collection
 
-const Company = mongoose.model('company',companySchema);
+const Company = mongoose.model('Naukri',companySchema);
 
 // create a schema for jobb 
 
@@ -40,7 +40,7 @@ const jobSchema  = new mongoose.Schema({
     versionKey:false
 });
 
-const job = mongoose.model('job',jobSchema);
+const job = mongoose.model('Naukri',jobSchema);
 
 const app=  express();
 app.use(express.json());
