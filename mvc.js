@@ -15,6 +15,7 @@ const companySchema  = new mongoose.Schema({
     working_mode:{type:String,required:true},
     noticePeriod_time:{type:String,required:true},
     rating:{type:String,required:true},
+    // companys ={ type:mongoose.Schema.Types.ObjectId,ref:"job",required:true}
 },{
     versionKey:false
 }
@@ -24,23 +25,7 @@ const companySchema  = new mongoose.Schema({
 
 const Company = mongoose.model('company',companySchema);
 
-// create a schema for jobb 
 
-const jobSchema  = new mongoose.Schema({
-    job_criteria :{type:String,required:true},
-    working_hour :{type:String,required:true},
-    location_wise_job :{type:String,required:true},
-    job_rating :{type:String,required:true},
-    skill :{type:String,required:true},
-    jobNoticePeriod :{type:String,required:false},
-    // company ={type:mongoose.Schema.Types.ObjectId,ref="Company",required:true},
-},
-
-{
-    versionKey:false
-});
-
-const Job = mongoose.model('job',jobSchema);
 
 const app=  express();
 app.use(express.json());
